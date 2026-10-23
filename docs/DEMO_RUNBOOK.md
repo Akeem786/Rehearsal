@@ -1,18 +1,43 @@
-# Rehearsal — Hackathon Demo Runbook
+# 🎙️ Rehearsal — Hackathon Demo Runbook
+
+[![Banner](https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,100:1a0a2e&height=200&section=header&text=Rehearsal&fontSize=56&fontColor=fb923c&animation=twinkling&fontAlignY=35&desc=MCP%20Voice%20Testing%20Workbench&descAlignY=55&descColor=fed7aa)](https://github.com/Akeem786/Rehearsal)
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Type-Hackathon%20Demo-orange?style=for-the-badge" alt="Hackathon Demo" />
+  <img src="https://img.shields.io/badge/Protocol-MCP-6366F1?style=for-the-badge" alt="MCP Protocol" />
+  <img src="https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" />
+  <img src="https://img.shields.io/badge/Frontend-React%20%2B%20TypeScript-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React + TypeScript" />
+</p>
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.12.4%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.12+" />
+  <img src="https://img.shields.io/badge/Tests-51%2F51%20Passing-brightgreen?style=for-the-badge" alt="51/51 Tests Passing" />
+  <img src="https://img.shields.io/badge/Fixtures-18%20Deterministic-informational?style=for-the-badge" alt="18 Deterministic Fixtures" />
+  <img src="https://img.shields.io/badge/Database-SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite" />
+</p>
 
 A structured, end-to-end operational guide for demonstrating the **Rehearsal MCP Voice Testing Workbench** to technical judges and reviewers in 3 to 5 minutes.
 
 ---
 
-## ⚠️ Important Disclosures & Evaluation Scope
+## 📑 Table of Contents
+- [⚠️ 1. Important Disclosures & Evaluation Scope](#%EF%B8%8F-1-important-disclosures--evaluation-scope)
+- [🛠️ 2. Prerequisites & Verification](#%EF%B8%8F-2-prerequisites--verification)
+- [🚀 3. Service Startup & Health Verification](#-3-service-startup--health-verification)
+- [⏱️ 4. 3–5 Minute Live Walkthrough Script](#%EF%B8%8F-4-35-minute-live-walkthrough-script)
+- [🔧 5. Troubleshooting Guide](#-5-troubleshooting-guide)
+- [📌 6. Summary Checklist for Demo Presenters](#-6-summary-checklist-for-demo-presenters)
+
+---
+
+## ⚠️ 1. Important Disclosures & Evaluation Scope
 
 1. **Independent Project**: Rehearsal is an independent open-source evaluation project. It is **not** affiliated with, endorsed by, or an official implementation of Amazon Alexa, Alexa+, or Amazon.com, Inc.
-2. **Heuristic Scores**: Linting and voice-readiness scores are rule-based heuristic calculations assessing input schema depth, required argument counts, and spoken TTS formatting risks. They are not official benchmarks or certifications.
+2. **Heuristic Scores**: Linting and voice-readiness scores are rule-based heuristic calculations assessing input schema depth, required argument counts, and spoken TTS formatting risks. They are **not** official benchmarks or certifications.
 3. **Deterministic Evaluation Fixtures**: The 18 test cases evaluate intent matching and slot extraction using deterministic offline utterances. **High scores on deterministic fixtures do not prove real-world accuracy** across acoustic background noise, regional accents, or open-ended conversations.
 
 ---
 
-## 🛠️ Prerequisites & Verification
+## 🛠️ 2. Prerequisites & Verification
 
 Ensure you have PowerShell open in the project root: `C:\Users\akeem\Rehearsal Hackthone`.
 
@@ -35,11 +60,11 @@ cd ..
 
 ---
 
-## 🚀 Service Startup & Health Verification
+## 🚀 3. Service Startup & Health Verification
 
 Open two dedicated Windows PowerShell terminal windows:
 
-### Terminal 1 — FastAPI Backend & Reference MCP Server
+### 🖥️ Terminal 1 — FastAPI Backend & Reference MCP Server
 ```powershell
 cd "C:\Users\akeem\Rehearsal Hackthone"
 .venv\Scripts\python.exe -m uvicorn rehearsal.api.app:app --host 127.0.0.1 --port 8000
@@ -50,7 +75,7 @@ cd "C:\Users\akeem\Rehearsal Hackthone"
   ```
   **Expected Response**: `status: healthy`, `service: rehearsal-api`, `mcp_sdk_version: 2.3.0`.
 
-### Terminal 2 — React + TypeScript Frontend Workbench
+### 🎨 Terminal 2 — React + TypeScript Frontend Workbench
 ```powershell
 cd "C:\Users\akeem\Rehearsal Hackthone\ui"
 npm run dev -- --host 127.0.0.1 --port 5173
@@ -59,9 +84,20 @@ npm run dev -- --host 127.0.0.1 --port 5173
 
 ---
 
-## ⏱️ 3–5 Minute Live Walkthrough Script
+## ⏱️ 4. 3–5 Minute Live Walkthrough Script
 
-### Step 1: Overview & The Voice Problem (0:00 – 0:50)
+| Step | Screen | Time |
+| :-: | :--- | :-: |
+| **1** | Overview & The Voice Problem | 0:00 – 0:50 |
+| **2** | Tool Explorer — Schema Deep-Dive | 0:50 – 1:30 |
+| **3** | Voice Linter — Diagnostic Console | 1:30 – 2:15 |
+| **4** | Compare — Side-by-Side Ergonomic Gains | 2:15 – 2:50 |
+| **5** | Evaluation Runner — Utterance Testing & TTS | 2:50 – 3:45 |
+| **6** | Run History — Verifiable SQLite Audit Trail | 3:45 – 4:15 |
+
+---
+
+### 🎬 Step 1: Overview & The Voice Problem (0:00 – 0:50)
 - **Action**: Open `http://127.0.0.1:5173/` in your browser.
 - **Visuals to Point Out**:
   - The top bar displays breadcrumbs `rehearsal / overview` and connection status `127.0.0.1:8000 (HEALTHY)`.
@@ -74,7 +110,7 @@ npm run dev -- --host 127.0.0.1 --port 5173
 
 ---
 
-### Step 2: Tool Explorer — Schema Deep-Dive (0:50 – 1:30)
+### 🔍 Step 2: Tool Explorer — Schema Deep-Dive (0:50 – 1:30)
 - **Action**: Click **Tool Explorer** in the left sidebar.
 - **Visuals to Point Out**:
   - Master-detail split layout. The left list catalogs 6 registered tools (3 flawed, 3 voice-first) across 3 domains.
@@ -87,10 +123,17 @@ npm run dev -- --host 127.0.0.1 --port 5173
 
 ---
 
-### Step 3: Voice Linter — Diagnostic Console (1:30 – 2:15)
+### 🧪 Step 3: Voice Linter — Diagnostic Console (1:30 – 2:15)
 - **Action**: Click **Voice Linter** in the left sidebar.
+- **The 5 Heuristic Rules**:
+  | Rule | Focus |
+  | :--- | :--- |
+  | `RULE-001` | Nesting Depth |
+  | `RULE-002` | Argument Count |
+  | `RULE-003` | TTS Hostility |
+  | `RULE-004` | Parameter Ergonomics |
+  | `RULE-005` | Description Clarity |
 - **Visuals to Point Out**:
-  - The 5 heuristic rules: `RULE-001` (Nesting Depth), `RULE-002` (Argument Count), `RULE-003` (TTS Hostility), `RULE-004` (Parameter Ergonomics), and `RULE-005` (Description Clarity).
   - Select **Flawed Only (3)** and click **Run Linter**.
   - Review the score (60/100, Grade D) and the findings table showing exact rule IDs, evidence codes, voice impact, and remediation instructions.
   - Select **Voice-First Only (3)** and click **Run Linter**.
@@ -100,7 +143,7 @@ npm run dev -- --host 127.0.0.1 --port 5173
 
 ---
 
-### Step 4: Compare — Side-by-Side Ergonomic Gains (2:15 – 2:50)
+### ⚖️ Step 4: Compare — Side-by-Side Ergonomic Gains (2:15 – 2:50)
 - **Action**: Click **Compare** in the left sidebar.
 - **Visuals to Point Out**:
   - Aggregate comparison counter: Flawed baseline `60.0/100` ➔ Voice-First `100.0/100` with **+40.0 pts** net improvement.
@@ -111,22 +154,29 @@ npm run dev -- --host 127.0.0.1 --port 5173
 
 ---
 
-### Step 5: Evaluation Runner — Utterance Testing & TTS (2:50 – 3:45)
+### 🎤 Step 5: Evaluation Runner — Utterance Testing & TTS (2:50 – 3:45)
 - **Action**: Click **Evaluation Runner** in the left sidebar.
 - **Visuals to Point Out**:
   - Initial state indicates `18 Fixtures Ready`.
   - Domain selector: `All (18)`, `Weather (6)`, `Smart Home (6)`, `Travel (6)`.
   - Ensure the **Live MCP Execution** checkbox is enabled.
   - Click **Run Test Suite**.
-  - Observe execution: The summary strip reports `Tool Match Accuracy: 100%`, `Exact Argument Match: 100%`, `Slot Extraction F1: 1.000`, `Est. Speech Duration: ~3.3s`, and the green **Live MCP Connected** badge.
-  - Review the results table showing casual spoken utterances, mapped MCP tools, extracted slots, and live tool responses.
-  - Click the **Listen** button on any case (e.g. `sh_01`) to demonstrate Web Speech API synthesis speaking the concise response aloud.
+- **Expected Results**:
+  | Metric | Value |
+  | :--- | :--- |
+  | **Tool Match Accuracy** | 100% |
+  | **Exact Argument Match** | 100% |
+  | **Slot Extraction F1** | 1.000 |
+  | **Est. Speech Duration** | ~3.3s |
+  | **Status Badge** | 🟢 Live MCP Connected |
+- Review the results table showing casual spoken utterances, mapped MCP tools, extracted slots, and live tool responses.
+- Click the **Listen** button on any case (e.g. `sh_01`) to demonstrate Web Speech API synthesis speaking the concise response aloud.
 - **Narrative**:
   > *"Rehearsal doesn't just lint schemas; it runs test utterances against live in-memory MCP clients. Here, casual user phrases like 'turn off the kitchen lights' are mapped to the tool and slots are extracted. We also estimate spoken duration at 150 words-per-minute to keep turn-taking brief."*
 
 ---
 
-### Step 6: Run History — Verifiable SQLite Audit Trail (3:45 – 4:15)
+### 🗂️ Step 6: Run History — Verifiable SQLite Audit Trail (3:45 – 4:15)
 - **Action**: Click **Run History** in the left sidebar.
 - **Visuals to Point Out**:
   - Show the newly recorded evaluation run persisted in `rehearsal_history.sqlite3`.
@@ -139,22 +189,28 @@ npm run dev -- --host 127.0.0.1 --port 5173
 
 ---
 
-## 🔧 Troubleshooting Guide
+## 🔧 5. Troubleshooting Guide
 
 | Issue | Root Cause | Resolution |
 | :--- | :--- | :--- |
-| **"Workbench Connection Offline" on Overview** | FastAPI backend is not running on port 8000. | Start Terminal 1 with `.venv\Scripts\python.exe -m uvicorn rehearsal.api.app:app --host 127.0.0.1 --port 8000`. Click **Retry Connection**. |
-| **Frontend displays blank page** | Node dependencies not built or port 5173 occupied. | In `ui/`, run `npm run build` to verify compilation, then `npm run dev -- --host 127.0.0.1 --port 5173`. |
-| **Listen button produces no audio** | Browser speech synthesis blocked or muted. | Ensure browser tab is not muted and OS audio output is enabled. Note that `window.speechSynthesis` requires user gesture activation. |
-| **Clipboard copy fails** | Browser permissions denied. | Ensure your browser allows clipboard access on `http://127.0.0.1:5173/`. |
-| **Port 8000 or 5173 already in use** | Stale processes from previous sessions. | Check running tasks with `Get-Process -Name python, node` in PowerShell and terminate stale instances. |
+| **"Workbench Connection Offline" on Overview** | FastAPI backend is not running on port 8000 | Start Terminal 1 with `.venv\Scripts\python.exe -m uvicorn rehearsal.api.app:app --host 127.0.0.1 --port 8000`. Click **Retry Connection**. |
+| **Frontend displays blank page** | Node dependencies not built or port 5173 occupied | In `ui/`, run `npm run build` to verify compilation, then `npm run dev -- --host 127.0.0.1 --port 5173`. |
+| **Listen button produces no audio** | Browser speech synthesis blocked or muted | Ensure browser tab is not muted and OS audio output is enabled. Note that `window.speechSynthesis` requires user gesture activation. |
+| **Clipboard copy fails** | Browser permissions denied | Ensure your browser allows clipboard access on `http://127.0.0.1:5173/`. |
+| **Port 8000 or 5173 already in use** | Stale processes from previous sessions | Check running tasks with `Get-Process -Name python, node` in PowerShell and terminate stale instances. |
 
 ---
 
-## 📌 Summary Checklist for Demo Presenters
+## 📌 6. Summary Checklist for Demo Presenters
 
-- [ ] Backend running and healthy at `http://127.0.0.1:8000/api/health`.
-- [ ] Frontend running at `http://127.0.0.1:5173/`.
-- [ ] Browser window zoomed to 100% at 1080p or 1440p resolution.
-- [ ] Audio volume set to a comfortable level for TTS demonstration.
-- [ ] Independent open-source disclaimer clearly communicated to viewers.
+- [ ] Backend running and healthy at `http://127.0.0.1:8000/api/health`
+- [ ] Frontend running at `http://127.0.0.1:5173/`
+- [ ] Browser window zoomed to 100% at 1080p or 1440p resolution
+- [ ] Audio volume set to a comfortable level for TTS demonstration
+- [ ] Independent open-source disclaimer clearly communicated to viewers
+
+<p align="center">
+  ⭐ If you found this project helpful, please <strong>star the repo</strong> and share it!
+</p>
+
+[![Footer](https://capsule-render.vercel.app/api?type=waving&color=0:1a0a2e,100:0d1117&height=120&section=footer&fontColor=fb923c)](https://github.com/Akeem786/Rehearsal)
