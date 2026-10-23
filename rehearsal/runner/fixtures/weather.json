@@ -1,0 +1,78 @@
+[
+  {
+    "id": "wx_01",
+    "domain": "weather",
+    "utterance": "What is the weather like in Seattle today?",
+    "expected_tool": "get_weather_summary",
+    "expected_arguments": {
+      "location": "Seattle",
+      "timeframe": "today"
+    },
+    "rationale": "Direct spoken inquiry for Seattle weather maps to voice-optimized weather tool.",
+    "is_ambiguous": false,
+    "should_abstain": false
+  },
+  {
+    "id": "wx_02",
+    "domain": "weather",
+    "utterance": "Can you check the forecast for New York tomorrow?",
+    "expected_tool": "get_weather_summary",
+    "expected_arguments": {
+      "location": "New York",
+      "timeframe": "tomorrow"
+    },
+    "rationale": "Paraphrased weather inquiry specifying city and future timeframe slot.",
+    "is_ambiguous": false,
+    "should_abstain": false
+  },
+  {
+    "id": "wx_03",
+    "domain": "weather",
+    "utterance": "Tell me if it will rain in London this weekend.",
+    "expected_tool": "get_weather_summary",
+    "expected_arguments": {
+      "location": "London",
+      "timeframe": "this weekend"
+    },
+    "rationale": "Rain forecast query for London maps to weather summary tool.",
+    "is_ambiguous": false,
+    "should_abstain": false
+  },
+  {
+    "id": "wx_04",
+    "domain": "weather",
+    "utterance": "Fetch raw meteorological telemetry sensor array data for coordinates 47.6 latitude and -122.3 longitude.",
+    "expected_tool": "fetch_meteorological_telemetry_v2",
+    "expected_arguments": {
+      "spec": {
+        "coordinates": {
+          "latitude": 47.6,
+          "longitude": -122.3
+        }
+      }
+    },
+    "rationale": "Explicit technical telemetry request maps to flawed meteorological telemetry tool.",
+    "is_ambiguous": false,
+    "should_abstain": false
+  },
+  {
+    "id": "wx_05",
+    "domain": "weather",
+    "utterance": "Is it cold outside right now?",
+    "expected_tool": null,
+    "expected_arguments": {},
+    "rationale": "Ambiguous/underspecified query lacking target location; assistant should abstain or ask for clarification.",
+    "is_ambiguous": true,
+    "should_abstain": true
+  },
+  {
+    "id": "wx_06",
+    "domain": "weather",
+    "utterance": "Play the latest news podcast episode on the living room speaker.",
+    "expected_tool": null,
+    "expected_arguments": {},
+    "rationale": "Negative/out-of-domain media request; should not trigger any weather tool.",
+    "is_ambiguous": false,
+    "should_abstain": true
+  }
+]

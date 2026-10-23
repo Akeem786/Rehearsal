@@ -1,0 +1,82 @@
+[
+  {
+    "id": "tr_01",
+    "domain": "travel",
+    "utterance": "Find flights from New York to London this Friday.",
+    "expected_tool": "find_flight_summary",
+    "expected_arguments": {
+      "origin": "New York",
+      "destination": "London",
+      "date": "this Friday"
+    },
+    "rationale": "Direct spoken travel search with origin, destination, and relative date.",
+    "is_ambiguous": false,
+    "should_abstain": false
+  },
+  {
+    "id": "tr_02",
+    "domain": "travel",
+    "utterance": "Search for flights from Boston to Chicago.",
+    "expected_tool": "find_flight_summary",
+    "expected_arguments": {
+      "origin": "Boston",
+      "destination": "Chicago",
+      "date": "this Friday"
+    },
+    "rationale": "Flight lookup between major cities with default date timeframe.",
+    "is_ambiguous": false,
+    "should_abstain": false
+  },
+  {
+    "id": "tr_03",
+    "domain": "travel",
+    "utterance": "Look up nonstop flights from Seattle to San Francisco next Monday.",
+    "expected_tool": "find_flight_summary",
+    "expected_arguments": {
+      "origin": "Seattle",
+      "destination": "San Francisco",
+      "date": "next Monday"
+    },
+    "rationale": "Paraphrased flight search specifying custom weekday departure.",
+    "is_ambiguous": false,
+    "should_abstain": false
+  },
+  {
+    "id": "tr_04",
+    "domain": "travel",
+    "utterance": "Query GDS relational itinerary availability matrix from JFK to LHR for departure date 2026-11-01.",
+    "expected_tool": "query_itinerary_and_schedule_matrix",
+    "expected_arguments": {
+      "spec": {
+        "origin_iata": "JFK",
+        "dest_iata": "LHR",
+        "dates": {
+          "depart_iso": "2026-11-01"
+        }
+      }
+    },
+    "rationale": "Technical aviation GDS query referencing 3-letter IATA codes and ISO dates.",
+    "is_ambiguous": false,
+    "should_abstain": false
+  },
+  {
+    "id": "tr_05",
+    "domain": "travel",
+    "utterance": "Book me a flight tomorrow morning.",
+    "expected_tool": null,
+    "expected_arguments": {},
+    "rationale": "Ambiguous/underspecified request missing both origin and destination cities; assistant must clarify.",
+    "is_ambiguous": true,
+    "should_abstain": true
+  },
+  {
+    "id": "tr_06",
+    "domain": "travel",
+    "utterance": "Set a timer for fifteen minutes while I bake cookies.",
+    "expected_tool": null,
+    "expected_arguments": {},
+    "rationale": "Negative/out-of-domain clock utility command; no travel tool should be triggered.",
+    "is_ambiguous": false,
+    "should_abstain": true
+  }
+]

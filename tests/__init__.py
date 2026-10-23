@@ -1,0 +1,1 @@
+"""Rehearsal automated test suite."""

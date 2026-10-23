@@ -1,0 +1,77 @@
+[
+  {
+    "id": "sh_01",
+    "domain": "smart_home",
+    "utterance": "Turn on the living room lights.",
+    "expected_tool": "control_home_device",
+    "expected_arguments": {
+      "room": "living room",
+      "device": "lights",
+      "action": "turn on"
+    },
+    "rationale": "Direct home automation request specifying room, device, and affirmative action.",
+    "is_ambiguous": false,
+    "should_abstain": false
+  },
+  {
+    "id": "sh_02",
+    "domain": "smart_home",
+    "utterance": "Could you please switch off the fan in the kitchen?",
+    "expected_tool": "control_home_device",
+    "expected_arguments": {
+      "room": "kitchen",
+      "device": "fan",
+      "action": "turn off"
+    },
+    "rationale": "Polite natural paraphrase requesting kitchen fan deactivation.",
+    "is_ambiguous": false,
+    "should_abstain": false
+  },
+  {
+    "id": "sh_03",
+    "domain": "smart_home",
+    "utterance": "Dim the bedroom lamp.",
+    "expected_tool": "control_home_device",
+    "expected_arguments": {
+      "room": "bedroom",
+      "device": "lamp",
+      "action": "dim"
+    },
+    "rationale": "Dimming adjustment command for bedroom lamp.",
+    "is_ambiguous": false,
+    "should_abstain": false
+  },
+  {
+    "id": "sh_04",
+    "domain": "smart_home",
+    "utterance": "Dispatch binary RPC actuator command on device 0x4A9F-B3C1 with register mask 1.",
+    "expected_tool": "execute_home_iot_command_rpc",
+    "expected_arguments": {
+      "device_guid_hex": "0x4A9F-B3C1",
+      "register_state_mask": 1
+    },
+    "rationale": "Low-level hardware command referencing hex GUID maps to flawed RPC tool.",
+    "is_ambiguous": false,
+    "should_abstain": false
+  },
+  {
+    "id": "sh_05",
+    "domain": "smart_home",
+    "utterance": "Turn it on.",
+    "expected_tool": null,
+    "expected_arguments": {},
+    "rationale": "Ambiguous/underspecified command missing both room and device targets; assistant must request clarification.",
+    "is_ambiguous": true,
+    "should_abstain": true
+  },
+  {
+    "id": "sh_06",
+    "domain": "smart_home",
+    "utterance": "What is the square root of one hundred and forty-four?",
+    "expected_tool": null,
+    "expected_arguments": {},
+    "rationale": "Negative/out-of-domain mathematical calculation; no IoT device should be triggered.",
+    "is_ambiguous": false,
+    "should_abstain": true
+  }
+]
